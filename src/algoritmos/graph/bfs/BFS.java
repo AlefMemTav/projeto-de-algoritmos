@@ -6,15 +6,31 @@ import java.util.Queue;
 
 import algoritmos.graph.model.Graph;
 
+/**
+ * BFS (Breadth-First Search) traversal algorithm for a graph.
+ */
 public class BFS {
+	/** The graph to be traversed. */
 	private Graph graph;
+
+	/** Array to keep track of visited vertices during traversal. */
 	private boolean[] visited;
 
+	/**
+	 * Constructs a BFS with the specified graph.
+	 * 
+	 * @param graph the graph to perform BFS on
+	 */
 	public BFS(Graph graph) {
 		this.graph = graph;
-		visited = new boolean[graph.getV()];
+		visited = new boolean[graph.getNumVertices()];
 	}
 
+	/**
+	 * Performs BFS traversal starting from the specified start vertex.
+	 * 
+	 * @param startVertex the start vertex for BFS traversal
+	 */
 	public void traverse(int startVertex) {
 
 		Queue<Integer> queue = new LinkedList<Integer>();
@@ -25,7 +41,7 @@ public class BFS {
 		while (!queue.isEmpty()) {
 
 			int vertex = queue.poll();
-			System.out.print(vertex + " ");
+			printVertex(vertex);
 
 			ArrayList<LinkedList<Integer>> adjacencyList = graph.getAdjacencyList();
 			LinkedList<Integer> adjList = adjacencyList.get(vertex);
@@ -37,5 +53,14 @@ public class BFS {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Prints a visited vertex.
+	 * 
+	 * @param vertex the visited vertex
+	 */
+	private void printVertex(int vertex) {
+		System.out.print(vertex + " ");
 	}
 }
