@@ -38,12 +38,12 @@ public class BFS {
 		visited[startVertex] = true;
 		queue.offer(startVertex);
 
+		ArrayList<LinkedList<Integer>> adjacencyList = graph.getAdjacencyList();
 		while (!queue.isEmpty()) {
 
 			int vertex = queue.poll();
 			printVertex(vertex);
 
-			ArrayList<LinkedList<Integer>> adjacencyList = graph.getAdjacencyList();
 			LinkedList<Integer> adjList = adjacencyList.get(vertex);
 			for (Integer adj : adjList) {
 
